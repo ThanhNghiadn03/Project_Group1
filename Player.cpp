@@ -12,7 +12,11 @@ class Player:public Person
 		float weight; // Can nang
 		string injury; // Loai chan thuong
 		string position; // vi tri
+		long long value;
 	public:
+		long long getValue() {
+			return this->value;
+		}
 		void setInjury(string injury){
 			this->injury = injury;
 		}
@@ -85,7 +89,7 @@ class Player:public Person
 																				
 		Player() {
 		} 
-		Player(	string idMembers,string contractTerm,int idCardNumber,string fullName,int age,long long salary,int numberOfShirt,int Appearance,int numOfYellowCard,int numOfRedCard,int techniqueStat,int assistNumInSeason,int goalsNumInSeason,float height,float weight,string injury,string position) :Person(idMembers, contractTerm,idCardNumber, fullName, age, salary)
+		Player(	string idMembers,string contractTerm,int idCardNumber,string fullName,int age,long long salary,int numberOfShirt,int Appearance,int numOfYellowCard,int numOfRedCard,int techniqueStat,int assistNumInSeason,int goalsNumInSeason,float height,float weight,string injury,string position,long long value) :Person(idMembers, contractTerm,idCardNumber, fullName, age, salary)
 		{	
 	     this->numberOfShirt=numberOfShirt ;
 	     this->Appearance=Appearance ;
@@ -98,6 +102,7 @@ class Player:public Person
 	     this->weight=weight ;
 	     this->injury=injury ;
 	     this->position=position;
+	     this->value = value;
 		}
 		void input()
 		{
@@ -105,9 +110,9 @@ class Player:public Person
 			Person::input();
 			cout<<"\nNumber of shirt(1-25): ";
 			cin>>numberOfShirt;
-			cout<<"\nHeight: ";
+			cout<<"\nHeight (cm) : ";
 			cin>>height;
-			cout<<"\nWeight: ";
+			cout<<"\nWeight (kg): ";
 			cin>>weight;
 			cout<<"\nPosition: ";
 			cin>>this->position;
@@ -125,15 +130,18 @@ class Player:public Person
 			cout<<"\nThe number of goals in Season: ";
 			cin>>goalsNumInSeason;	
 			cout<<"\nPosition: ";
-			getline(cin,position);		
+			getline(cin,position);	
+			cout << "\nValue's' player : ";
+			cin >> this->value;	
 		}
 		void output()
 		{
 			cout<<"\n--------------------------------------------------"<<endl;
 			cout<<"\n                         OUTPUT THE PLAYER'S INFORMATION'"<<endl;
 			Person::output();
-			cout<<"\nNumber of shirt: "<<numberOfShirt<<"\n\n"<<"Height: "<<height<<"\n\n"<<"Weight: "<<weight<<endl;  
-			cout<<"\nPosition: "<<this->getPosition()<<endl;              
+			cout<<"\nNumber of shirt: "<<numberOfShirt<<"\n\n"<<"Height: "<<height<<" cm"<<"\n\n"<<"Weight: "<<weight<<" kg"<<endl;  
+			cout<<"\nPosition: "<<this->getPosition()<<endl;    
+			cout<<"\nValue's player : "<<this->value<<" $"<<endl;          
 			cout<<"\nInjury: "<<injury<<"\n\n"<<"Appearance: "<<Appearance<<endl;
 			cout<<"\nNumber of Yellow Card: "<<numOfYellowCard<<"\n\n"<<"Number of Red Card: "<<numOfRedCard<<"\n"<<endl;
 			cout<<"The technique stat: "<<techniqueStat<<"/10"<<endl;

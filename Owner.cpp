@@ -127,7 +127,7 @@ class Owner:public FootballClub{
 	//signingCondition da hoan thien
 	
 	bool signingCondition(){
-		if (this->publicDebt<=((this->netProfit+this->netWorth)*2) && this->ROE()>0.15 && this->getAmount()!=0)
+		if (this->publicDebt<=((this->netProfit+this->netWorth)*2) && this->ROE()>0.15 && this->getAmount()!=0&&this->getAmount()<(this->getWorth()+this->getProfit())&&this->getAmount()>1000000000)
 			return true;
 		else 
 			return false;
@@ -164,99 +164,4 @@ class Owner:public FootballClub{
 		return false;
 	}
 };
-
-//class listOwner{
-//
-//	public: 
-//		int n;
-//		vector<Owner> v;
-//		
-//		void inputList(){
-//			cin>>n;
-//			cout << "\n\nEnter the information of each candidate : \n";
-//			for(int i=0;i<n;i++){
-//				cout << "\n\n--------------------------------------------------------------------------------------------------------------------------------------\n\n";
-//				cout<<"\nCandidate "<<i+1<<" : ";
-//				Owner on;
-//				on.input();
-//				v.push_back(on);
-//			}
-//			ofstream fo("D:\\OC.txt");
-//			if(fo.is_open()){
-//				for(int i=0;i<v.size();i++){
-//					fo<<"-----------------Owner Candidate"<<i+1<<"---------------"<<endl;
-//					fo<<"\nID of this candidate : "<<v[i].getMember()<<endl;
-//					fo<<"\nExpected contract Term: "<<v[i].getcontract()<<endl;
-//					fo<<"\nCorporate TaxCode: "<<v[i].getTaxCode()<<endl;
-//					fo<<"\nCandidate's name': "<<v[i].getnameOwner()<<endl;
-//					fo<<endl;
-//				}
-//				fo.close();
-//			}else 
-//				cout<<"File not found!!!!";
-//		}
-//		void outputList(){
-//			cout<<"----------------------------------------------------------------"<<endl<<endl<<endl;
-//			cout << "\nDetailed list of each candidate :\n\n";
-//			for(int i=0;i<v.size();i++){
-//				v[i].output();
-//			}
-//		}
-//		
-//		void chooseTheOwner() {
-//			for(int i=0 ; i<v.size() ; i++) {
-//				if(v[i].bankruptcyRisk()==true || v[i].signingCondition()==false) {
-//					v.erase(v.begin()+i);
-//					i--;
-//				}
-//			}
-//			
-//			if(v.size()!=0) {
-//				checkOwner++;
-//				for(int i=0 ; i<v.size() ; i++) {
-//				for(int j=i ; j<v.size() ; j++) {
-//					if(v[i].getAmount() < v[j].getAmount()) {
-//						Owner tmp = v[i];
-//						v[i] = v[j];
-//						v[j] = tmp;
-//					}
-//				}
-//				}
-//				while(v.size()!=1) {
-//				v.pop_back();
-//				}
-//			} else {
-//					cout << "\n\noop!!!There are no suitable candidates in all that you have entered !!!\n\nWe need to find other candidates\n\nEnter the number of candidates you have selected : ";
-//				}
-//			}
-//		void scriptOfOwner() {
-//			cout << "Our team currently has no owner !!! \n\nYou need to enter the number of potential candidates for the position of team owner : ";
-//			this->inputList();
-//			this->outputList();
-//			this->chooseTheOwner();
-//			while(checkOwner==0) {
-//				this->inputList();
-//				this->chooseTheOwner();
-//			}
-//			cout << "\n\nWe reviewed each person's details and the fan vote took place !!!\n\nWe would like to announce the official owner of the team is Mr."<<v[0].getnameOwner();
-//			cout << "\n\nCongratulations Mr."<<v[0].getnameOwner()<<endl <<endl;
-//			ofstream fo("D:\\ON.txt");
-//		
-//			if(fo.is_open()){
-//				fo<<"--------------------Official owner------------------ "<<endl;
-//				fo<<"\nID.Members: ON01"<<endl;
-//				fo<<"\nContract Term: "<<v[0].getcontract()<<endl;
-//				fo<<"\nCorpor TaxCode: "<<v[0].getTaxCode()<<endl;
-//				fo<<"\nName of Owner: "<<v[0].getnameOwner()<<endl;
-//				fo<<"\nNet Worth: "<<v[0].getWorth()<<"$"<<endl;
-//				fo<<"\nNet Profit: "<<v[0].getProfit()<<"$"<<endl;
-//				fo<<"\nPublic Debt: "<<v[0].getDebt()<<"$"<<endl;
-//				fo<<"\nInvestment Amount: "<<v[0].getAmount()<<"$"<<endl;
-//				fo<<endl;
-//			
-//			fo.close();
-//		}else
-//			cout<<"File not found!!!!";
-//		}
-//};
 
