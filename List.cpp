@@ -1,5 +1,4 @@
 class listOwner{
-
 	public: 
 		int n;
 		vector<Owner> v;
