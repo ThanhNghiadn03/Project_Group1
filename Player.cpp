@@ -14,7 +14,7 @@ class Player:public Person
 		string position; // vi tri
 		long long value;
 	public:
-		long long getValue() {
+		long long getValuePlayer() {
 			return this->value;
 		}
 		void setInjury(string injury){

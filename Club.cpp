@@ -9,6 +9,15 @@ class Club {
 			this->name = name;
 			this->value = value;
 		}
+		void output() {
+			cout << "Name : "<< this->name << endl;
+			cout << "Value : "<< this->value<< endl;
+		}
+		string getName() {
+			return this->name;
+		}
+		long long getValue() {
+			return this->value;
+		}
 };
 
-class 

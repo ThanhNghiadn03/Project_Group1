@@ -9,11 +9,64 @@
 #include "List.cpp"
 #include "Club.cpp"
 
+Goalkeeper chooseGKLineUp(vector<Goalkeeper> &vg,int gk) {
+	int checkGK=0;
+	do {
+			for(int i=0 ; i<vg.size(); i++) {
+				if(gk == vg[i].getNumberOfShirt()) {
+					checkGK++;
+					return vg[i];
+				}
+			}
+		} while(checkGK == 0);
+}
+
+Midfielder chooseMFLineUp(vector<Midfielder> &vmf, int mf, const int k) {
+	int checkMF = 0;
+	while(checkMF == 0) {
+		cout << "Midfielder "<<k+1<<"   (8-6-12-25-9-13-21-32-29) :  ";
+		cin >> mf;
+		for(int i=0 ; i<vmf.size() ; i++) {
+			if(vmf[i].getNumberOfShirt() == mf) {
+				checkMF++;
+				return *(vmf.begin()+i);
+			}
+		}
+	}
+}
+
+Defender chooseDFLineUp(vector<Defender> &vd,int df , const int k) {
+	int checkDF = 0;
+	while(checkDF == 0) {
+		cout << "Defender "<<k + 1<<"   (2-3-4-5-20-16) :  ";
+		cin >> df;
+		for(int i=0 ; i<vd.size() ; i++) {
+			if(vd[i].getNumberOfShirt() == df) {
+				checkDF++;
+				return *(vd.begin()+i);
+			}
+		}
+	}
+}
+
+Forward chooseFWLineUp(vector<Forward> &vf , int fw , const int k) {
+	int checkFW = 0;
+	while(checkFW == 0) {
+		cout << "Forward "<<k + 1<<"   (7-10-11-17-19) :  ";
+		cin >> fw;
+		for(int i=0 ; i<vf.size() ; i++) {
+			if(vf[i].getNumberOfShirt() == fw) {
+				checkFW++;
+				return *(vf.begin()+i);
+			}
+		}
+	}
+}
 int main() {
 //	listOwner Lo;
 //	Lo.scriptOfOwner();
-//	Coach c("CO000" , "22/5/2025", 111111 , "Mourinho" ,53 , 8200000, 21, 6, 13 , 20);
-//	Management m("MN000" ,"22/5/2025" , 222222 , "Ralf Rangnick", 55, 5600000, 10,100000000, 8);
+	Coach c("CO000" , "22/5/2025", 111111 , "Mourinho" ,53 , 8200000, 21, 6, 13 , 20);
+	Management m("MN000" ,"22/5/2025" , 222222 , "Kevin Keegan", 55, 5600000, 10,100000000, 8);
 //	long long totalValue = 0;
 //	listManager lm;
 //	listCoach lc;
@@ -40,10 +93,18 @@ int main() {
 	Forward f3("LW001","05/02/2035",10003,"Neymar Jr",30,900000,11,25,2,0,9,3,8,180,70,"NO","LW",23000000,8,9,10,0);
 	Forward f4("ST002","03/10/2024",10004,"Le Cong Vinh",37,1000000,17,0,0,0,6,0,0,192,85,"NO","ST",1300000,6,8,7,0);
 	Forward f5("ST003","21/08/2024",10005,"Mikolaj Zlenski",20,850000,19,0,0,0,6,0,0,184,80,"NO","ST",1000000,4,5,5,0);
-//	vector<Forward> vf{f1,f2,f3,f4,f5};
-//	vector<Goalkeeper> vg{g1,g2,g3};
-//	vector<Defender> vd{d1,d2,d3,d4,d5,d6};
-//	vector<Midfielder> vmf{m1,m2,m3,m4,m5,m6,m7,m8,m9};
+	vector<Forward> vf{f1,f2,f3,f4,f5};
+	vector<Goalkeeper> vg{g1,g2,g3};
+	vector<Defender> vd{d1,d2,d3,d4,d5,d6};
+//	for(int i=0 ; i<vd.size() ; i++) {
+//		vd[i].output();
+//	}
+	vector<Midfielder> vmf{m1,m2,m3,m4,m5,m6,m7,m8,m9};
+	Club cl2("Newcastle" , 132900000);
+	Club cl3("Liverpool", 470000000);
+	stack<Club> fixture;
+	fixture.push(cl2);
+	fixture.push(cl3);
 //	cout << "After taking office as the owner of the team, "<<Lo.v[0].getnameOwner()<<" came to meet and talk with the current manager "<<m.getFullName();
 //	getch();
 //	cout << "\n\nAfter the meeting of the two people, " <<Lo.v[0].getnameOwner()<< " pondered whether to keep the current manager or recruit another manager\n\n";
@@ -141,6 +202,144 @@ int main() {
 //	cout << "\n\n"<<m.getFullName()<<" said : "<<"\"Yes sir , the transfer market is open next time , i will buy a striker to supplement the attack\"\n\n";
 //	getch();
 //	cout << Lo.v[0].getnameOwner() <<" said : "<<"\"Alright!!! which team will our team meet this Sunday ?\"\n\n";
-//	cout <<m.getFullName() << " said : "<<"\"We will meet Brighton\"\n\n";
+//	cout <<m.getFullName() << " said : "<<"\"We will meet "<<fixture.top().getName()<<"\"\n\n";
+//	cout <<"\n\n\n";
+//	getch();
+//	cout << "..........1 day before the match between Group 1 FC and Liverpool takes place........\n\n";
+//	getch();
+//	cout << "\nConversation between manager and coach .......\n\n";
+//	cout << m.getFullName()<<" said : Is everything ready yet? This is an important match to welcome the new owner of the team\"\n\n";
+//	getch();
+//	cout << c.getFullName()<<" said : Everything is ready , now it's just a matter of choosing 11 official names to play\"\n\n\n";
+//	getch();
+//	cout << "Assuming you were the coach of the team, how would you choose the starting lineup ?\"\n\n";
+	cout <<"\nFirst we need to choose the type of formation for the players\n\n";
+	getch();
+	cout << c.getFullName()<<" has trained the players in 4-4-2 and 4-3-3, to ensure quality you should only choose one of these two formations.\n\n";
+	cout << "4-4-2 (A)   or    4-3-3 (B) : ";
+	char type;
+	cin >> type;
+	type = toupper(type);
+	long long total11Value=0;
+	if(type == 'A') {
+		cout << "\nSecond , we need to select the players in positions ...... \n\n";
+		cout << "Goalkeeper (1-67-23) : ";
+		int gk;
+		cin >> gk;
+		Goalkeeper gkof = chooseGKLineUp(vg,gk);
+		total11Value+=gkof.getValuePlayer();
+		Defender dfof[100];
+		for(int i=0 ; i<4 ; i++) {
+			dfof[i] = chooseDFLineUp(vd,0,i);
+			total11Value += dfof[i].getValuePlayer();
+		}
+		Midfielder mfof[100];
+		for(int i=0 ; i<4 ; i++) {
+			mfof[i] = chooseMFLineUp(vmf,0,i);
+			total11Value += mfof[i].getValuePlayer();
+		}
+		Forward fwof[100];
+		for(int i=0 ; i<2 ; i++) {
+			fwof[i] = chooseFWLineUp(vf,0,i);
+			total11Value += fwof[i].getValuePlayer();
+		}
+		cout << "\n\n";
+		cout << "Line up :\n\n";
+		cout <<"\t\t\t"<<"\t\t\t\t\t"<< gkof.getFullName()<<"\n\n";
+		cout <<"\t\t\t";
+		for(int i=0 ; i<4 ; i++) {
+			cout << dfof[i].getFullName()<<"\t\t";
+		}
+		cout << "\n\n"<<"\t\t\t";
+		for(int i=0 ; i<4 ; i++) {
+			cout << mfof[i].getFullName()<<"\t\t";
+		}
+		cout << "\n\n"<<"\t\t\t";
+		cout << "\t\t\t";
+		for(int i=0 ; i<2 ; i++) {
+			cout << fwof[i].getFullName()<<"\t\t";
+		}
+		cout << "\n\n";
+		getch();
+		cout << "\n\n";
+		cout << c.getFullName() << "said : \"We now have a complete official lineup\"\n\n";
+	} else {
+		cout << "\nSecond , we need to select the players in positions ...... \n\n";
+		cout << "Goalkeeper (1-67-23) : ";
+		int gk;
+		cin >> gk;
+		Goalkeeper gkof = chooseGKLineUp(vg,gk);
+		total11Value+=gkof.getValuePlayer();
+		Defender dfof[100];
+		for(int i=0 ; i<4 ; i++) {
+			dfof[i] = chooseDFLineUp(vd,0,i);
+			total11Value += dfof[i].getValuePlayer();
+		}
+		Midfielder mfof[100];
+		for(int i=0 ; i<3 ; i++) {
+			mfof[i] = chooseMFLineUp(vmf,0,i);
+			total11Value += mfof[i].getValuePlayer();
+		}
+		Forward fwof[100];
+		for(int i=0 ; i<3 ; i++) {
+			fwof[i] = chooseFWLineUp(vf,0,i);
+			total11Value += fwof[i].getValuePlayer();
+		}
+		cout << "\n\n";
+		cout << "Line up :\n\n";
+		cout <<"\t\t\t\t\t\t\t\t"<< gkof.getFullName()<<"\n\n"<<"\t\t\t";
+		for(int i=0 ; i<4 ; i++) {
+			cout << dfof[i].getFullName()<<"\t\t";
+		}
+		cout << "\n\n"<<"\t\t\t";
+		cout<<"\t\t";
+		for(int i=0 ; i<3 ; i++) {
+			cout << mfof[i].getFullName()<<"\t\t";
+		}
+		cout << "\n\n"<<"\t\t\t";
+		cout << "\t\t";
+		for(int i=0 ; i<3 ; i++) {
+			cout << fwof[i].getFullName()<<"\t\t";
+		}
+		getch();
+		cout << c.getFullName() << "said : \"We now have a complete official lineup\"\n\n";
+	}
+	getch();
+	cout <<"\n\n....15h00....Sunday\n\n";
+	getch();
+	cout << "\nThe match between Group 1 FC and liverpool is going on .... seems to be very intense\n\n";
+	getch();
+	cout << "\n.......The final whistle......\n";
+	if(total11Value > fixture.top().getValue()) {
+		srand(time(NULL)); 
+		int ourTeam = rand() % (5 - 3 + 1) + 3;
+		int theirTeam = rand() % (2 - 1 + 1) + 2;
+		getch();
+		cout << "\nGroup 1 FC "<< ourTeam << " : "<<theirTeam<<fixture.top().getName()<<endl<<endl;
+		if(ourTeam > theirTeam) {
+			cout << "\nWe win !!!";
+		} else if(ourTeam == theirTeam) {
+			cout << "\nTie match !!!";
+		} else {
+			cout << "\nWe lose .....";
+		}
+	} else {
+		srand(time(NULL)); 
+		int ourTeam = rand() % (4 - 0 + 1) + 0;
+		int theirTeam = rand() % (4 - 0 + 1) + 0;
+		getch();
+		cout << "\nGroup 1 FC    "<< ourTeam << ":"<<theirTeam<<"    "<<fixture.top().getName()<<endl<<endl;
+		if(ourTeam > theirTeam) {
+			getch();
+			cout << "\nWe win !!!";
+		} else if(ourTeam == theirTeam) {
+			getch();
+			cout << "\nTie match !!!";
+		} else {
+			getch();
+			cout << "\nWe lose .....";
+		}
+	}
+
 	return 0;
 } 

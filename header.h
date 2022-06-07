@@ -6,4 +6,6 @@
 #include<bits/stdc++.h>
 #include<conio.h>
 #include<stack>
+#include<cstdlib>
+#include<ctime>
 using namespace std;
